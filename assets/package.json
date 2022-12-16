@@ -1,0 +1,14 @@
+{
+  "name": "@aziz403/ux-zoom",
+  "version": "1.0.0",
+  "description": "Zoom integration for Symfony",
+  "author": "aziz403",
+  "license": "MIT",
+  "symfony": {
+    "controllers": {}
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0",
+    "@zoomus/websdk": "^2.9.5"
+  }
+}
