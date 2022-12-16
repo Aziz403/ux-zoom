@@ -5,7 +5,14 @@
   "author": "aziz403",
   "license": "MIT",
   "symfony": {
-    "controllers": {}
+    "controllers": {
+      "controller": {
+        "main": "controllers/controller.js",
+        "webpackMode": "eager",
+        "fetch": "eager",
+        "enabled": true
+      }
+    }
   },
   "peerDependencies": {
     "@hotwired/stimulus": "^3.0.0",
