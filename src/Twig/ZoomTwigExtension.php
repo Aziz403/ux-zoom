@@ -10,7 +10,7 @@ use Twig\TwigFunction;
 
 class ZoomTwigExtension extends AbstractExtension
 {
-    private $stimulus;
+    private StimulusTwigExtension $stimulus;
 
     public function __construct(StimulusTwigExtension $stimulus)
     {
@@ -20,11 +20,11 @@ class ZoomTwigExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('render_zoom','renderZoom',['needs_environment' => true, 'is_safe' => ['html']])
+            new TwigFunction('render_zoom',[$this,'renderZoom'],['needs_environment' => true, 'is_safe' => ['html']])
         ];
     }
 
-    public function renderZoom(Environment $env, ZoomMtg $zoom)
+    public function renderZoom(Environment $env, ZoomMtg $zoom): string
     {
         $controller = $this->stimulus->renderStimulusController(
             $env,
