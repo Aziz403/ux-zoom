@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension;
 use Twig\Environment;
 
-class ZoomExtension extends Extension
+class UxZoomExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
