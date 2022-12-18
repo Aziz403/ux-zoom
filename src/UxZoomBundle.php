@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @final
  */
-class ZoomBundle extends Bundle
+class UxZoomBundle extends Bundle
 {
     public function getPath(): string
     {
