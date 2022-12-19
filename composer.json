@@ -2,7 +2,7 @@
     "name": "aziz403/ux-zoom",
     "type": "symfony-bundle",
     "description": "Zoom integration for Symfony",
-    "keywoards": [
+    "keywords": [
         "symfony-bundle",
         "symfony-ux",
         "zoom"
