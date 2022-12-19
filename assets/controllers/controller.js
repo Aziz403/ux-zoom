@@ -6,7 +6,7 @@ export default class extends Controller {
     static values = {
         'sdkKey': String,
         'sdkSecret': String,//TODO: hada 3endo xi 7el bax itekheba
-        'config': Array
+        'config': Object
     }
 
     connect() {
@@ -26,6 +26,10 @@ export default class extends Controller {
             userEmail,
             lang,
         } = this.configValue;
+
+        if(leaveUrl==='window.location'){
+            leaveUrl = window.location;
+        }
 
         ZoomMtg.generateSDKSignature({
             meetingNumber: meetingNumber,

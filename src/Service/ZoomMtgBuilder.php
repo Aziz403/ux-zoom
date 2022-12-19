@@ -15,8 +15,28 @@ class ZoomMtgBuilder implements ZoomMtgBuilderInterface
         $this->sdkSecret = $sdkSecret;
     }
 
-    public function createZoom(array $options): ZoomMtg
+    public function createZoom(
+        string $meetingNumber,
+        string $userName,
+        string $passWord,
+        string $leaveUrl = 'window.location',
+        int $role = 1,
+        string $userEmail = '',
+        string $lang = 'en-US'
+    ): ZoomMtg
     {
-        return new ZoomMtg($this->sdkKey,$this->sdkSecret,$options);
+        return new ZoomMtg(
+            $this->sdkKey,
+            $this->sdkSecret,
+            [
+                'meetingNumber' => $meetingNumber,
+                'userName' => $userName,
+                'passWord' => $passWord,
+                'leaveUrl' => $leaveUrl,
+                'role' => $role,
+                'userEmail' => $userEmail,
+                'lang' => $lang
+            ]
+        );
     }
 }
