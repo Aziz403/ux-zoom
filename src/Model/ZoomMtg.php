@@ -33,12 +33,4 @@ class ZoomMtg
     {
         return $this->controller;
     }
-
-    /**
-     * @param string $controller
-     */
-    public function setController(string $controller)
-    {
-        $this->controller = $controller;
-    }
 }
