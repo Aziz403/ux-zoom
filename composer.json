@@ -20,7 +20,7 @@
             "email": "azizbenmallouk4@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=7.4",
         "symfony/config": "^4.4.17|^5.0|^6.0",
