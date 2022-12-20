@@ -20,9 +20,11 @@ class ZoomMtg
     public function createView(): array
     {
         return [
-            'sdkKey' => $this->sdkKey,
-            'sdkSecret' => $this->sdkSecret,
-            'config' => $this->config
+            'view' => [
+                'sdkKey' => $this->sdkKey,
+                'sdkSecret' => $this->sdkSecret,
+                'config' => $this->config
+            ]
         ];
     }
 

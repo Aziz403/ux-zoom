@@ -4,9 +4,7 @@ import { ZoomMtg } from '@zoomus/websdk';
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static values = {
-        'sdkKey': String,
-        'sdkSecret': String,//TODO: hada 3endo xi 7el bax itekheba
-        'config': Object
+        'view': Object
     }
 
     connect() {
@@ -16,41 +14,33 @@ export default class extends Controller {
         ZoomMtg.preLoadWasm();
         ZoomMtg.prepareWebSDK();
 
-        // get meeting args from url
-        let {
-            meetingNumber,
-            userName,
-            passWord,
-            leaveUrl,
-            role,
-            userEmail,
-            lang,
-        } = this.configValue;
+        let { sdkKey, sdkSecret, config } = this.viewValue;
+        console.log('config',config,this.viewValue)
 
-        if(leaveUrl==='window.location'){
-            leaveUrl = window.location;
+        if(config.leaveUrl==='window.location'){
+            config.leaveUrl = window.location;
         }
 
         ZoomMtg.generateSDKSignature({
-            meetingNumber: meetingNumber,
-            sdkKey: this.sdkKeyValue,
-            sdkSecret: this.sdkSecretValue,
-            role: role,
+            meetingNumber: config.meetingNumber,
+            sdkKey: sdkKey,
+            sdkSecret: sdkSecret,
+            role: config.role,
             success: function (res) {
                 let signature = res.result;
                 ZoomMtg.init({
-                    leaveUrl: leaveUrl ?? window.location,
+                    leaveUrl: config.leaveUrl,
                     disableCORP: !window.crossOriginIsolated,
                     success: function () {
-                        ZoomMtg.i18n.load(lang);
-                        ZoomMtg.i18n.reload(lang);
+                        ZoomMtg.i18n.load(config.lang);
+                        ZoomMtg.i18n.reload(config.lang);
                         ZoomMtg.join({
-                            meetingNumber: meetingNumber,
-                            userName: userName,
+                            meetingNumber: config.meetingNumber,
+                            userName: config.userName,
                             signature: signature,
-                            sdkKey: this.sdkKeyValue,
-                            userEmail: userEmail,
-                            passWord: passWord,
+                            sdkKey: sdkKey,
+                            userEmail: config.userEmail,
+                            passWord: config.passWord,
                             success: function (res) {
                                 //join the meeting successfully
                                 ZoomMtg.getAttendeeslist({
